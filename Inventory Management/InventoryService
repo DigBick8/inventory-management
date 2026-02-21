@@ -1,0 +1,39 @@
+using System;
+
+namespace InventoryManagement.Services
+{
+    public class InventoryService
+    {
+        public string[ , ] products;
+        public int[] initialStock;
+
+        public InventoryService()
+        {
+            products = new string[2, 3]
+            {
+                { "Apples", "Pears", "Oranges" },
+                { "10", "10", "15" }
+            };
+
+            initialStock = new int[3] { 10, 10, 15 };
+        }
+
+        public string[ , ] GetInventory()
+        {
+            return products;
+        }
+
+        public void UpdateStock(int index, int newStock)
+        {
+            products[1, index] = newStock.ToString();
+        }
+
+        public void ResetInventory()
+        {
+            for (int i = 0; i < initialStock.Length; i++)
+            {
+                products[1, i] = initialStock[i].ToString();
+            }
+        }
+    }
+}
